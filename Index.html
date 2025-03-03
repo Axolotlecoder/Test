@@ -44,9 +44,6 @@
     async function loadData() {
         try {
             const response = await fetch('data.json');
-            if (!response.ok) {
-                throw new Error('Netzwerkantwort war nicht ok');
-            }
             const data = await response.json();
             displayData(data);
         } catch (error) {
@@ -56,4 +53,21 @@
 
     // Funktion zum Anzeigen der Daten in der Tabelle
     function displayData(data) {
-        const tableBody = document.getElementById('data-table').getElementsByTagName('tbody')[
+        const tableBody = document.getElementById('data-table').getElementsByTagName('tbody')[0];
+        data.forEach(item => {
+            const row = tableBody.insertRow();
+            const cellName = row.insertCell(0);
+            const cellAlter = row.insertCell(1);
+            const cellBeruf = row.insertCell(2);
+            cellName.textContent = item.name;
+            cellAlter.textContent = item.alter;
+            cellBeruf.textContent = item.beruf;
+        });
+    }
+
+    // Daten laden, wenn die Seite geladen wird
+    window.onload = loadData;
+</script>
+
+</body>
+</html>
