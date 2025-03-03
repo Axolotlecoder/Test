@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datenanzeige</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Datenanzeige</h1>
+<table id="data-table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Alter</th>
+            <th>Beruf</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Daten werden hier eingefügt -->
+    </tbody>
+</table>
+
+<script>
+    // Funktion zum Laden der JSON-Daten
+    async function loadData() {
+        try {
+            const response = await fetch('data.json');
+            if (!response.ok) {
+                throw new Error('Netzwerkantwort war nicht ok');
+            }
+            const data = await response.json();
+            displayData(data);
+        } catch (error) {
+            console.error('Fehler beim Laden der Daten:', error);
+        }
+    }
+
+    // Funktion zum Anzeigen der Daten in der Tabelle
+    function displayData(data) {
+        const tableBody = document.getElementById('data-table').getElementsByTagName('tbody')[
