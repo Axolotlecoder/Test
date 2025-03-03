@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Max Mustermann",
+        "alter": 30,
+        "beruf": "Softwareentwickler"
+    },
+    {
+        "name": "Erika Musterfrau",
+        "alter": 25,
+        "beruf": "Grafikdesignerin"
+    },
+    {
+        "name": "Hans Müller",
+        "alter": 40,
+        "beruf": "Projektmanager"
+    }
+]
